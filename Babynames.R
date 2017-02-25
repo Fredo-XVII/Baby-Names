@@ -41,8 +41,9 @@ filelist_n <- length(filesList)
 
 
 # Testing the loop
-for (i in 1:2) {
-  print("File being processed:", filesList[[i]])
+#for (i in 1:2) {
+  print("File being processed:")
+  print(filesList[[i]])
   
   #Main body of the data processing
 
