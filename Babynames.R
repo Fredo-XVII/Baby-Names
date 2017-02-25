@@ -27,16 +27,46 @@ library(readr)
 library(sqldf)
 library(dplyr)
 
-# Look at data
+# Creates the final datasets
 
-tbl_names <- read.csv.sql('data/yob1880.txt', sql = "select * from file", header = FALSE)
-colnames(tbl_names) <- c('Name','Gender','Count')
+National_Names <- data.frame(Name = character(),
+           Gender=character(), 
+           Count=integer(),
+           Yr_rank=integer(),
+           Year=integer())
 
-tbl_names$yr_rank <- rank(-c(tbl_names$Count), ties.method = 'min')
-
-tbl_names <- tbl_names %>% 
-              group_by(Gender) %>%
-              mutate( yr_rank = row_number() )
+# Get the list of files to combine:
+filesList <- list.files(path.expand('data'), pattern="yob*", ignore.case=TRUE)
+filelist_n <- length(filesList)
 
 
-National_Names <- 
+# Testing the loop
+for (i in 1:2) {
+  print("File being processed:", filesList[[i]])
+  
+  #Main body of the data processing
+
+  tbl_names <- read.csv.sql(sprintf('data/%s',filesList[[i]]), sql = "select * from file", header = FALSE)
+  colnames(tbl_names) <- c('Name','Gender','Count')
+  
+  tbl_names <- tbl_names %>% 
+    group_by(Gender) %>%
+    mutate( Yr_rank = row_number() )
+  
+  
+  # End of data processing 
+  
+  # Create Year variable
+  tbl_names$Year <- substr(filesList[[i]],4,7) 
+
+  National_Names <- rbind(National_Names,as.data.frame(tbl_names) )
+}
+
+
+
+for (i in 1:filelist_n) {
+  print("File being processed:")
+  print(filesList[[i]])
+  print(sprintf('data/%s',filesList[[i]]))
+}
+

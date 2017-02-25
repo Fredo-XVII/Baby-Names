@@ -34,3 +34,20 @@ To safeguard privacy, we restrict our list of names to those with at least 5 occ
 less than 5 occurrences for a year of birth in any state, the sum of the state counts for that year will be
 less than the national count.
 ```
+
+# Hadley Package for BabyNames:
+
+```
+# Baby Names
+# Source: https://github.com/hadley/babynames
+
+library('babynames')
+
+head(applicants)
+head(babynames)
+head(lifetables)
+head(births)
+
+max(births$year)
+colm <- subset(babynames,babynames$name == 'Colm')
+```
