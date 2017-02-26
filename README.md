@@ -1,7 +1,14 @@
 # Baby-Names
 Analyzing baby names
 
-# Names dataset
+# To do List:
+ - Loop over states:
+  - Solutions: 1 put national and state data into separate data folders
+
+
+# Meta Data
+
+## Names dataset
 
 ```
 National Data on the relative frequency of given names in the population of
@@ -17,7 +24,7 @@ rank 2, and so forth.
 To safeguard privacy, we restrict our list of names to those with at least 5 occurrences. 
 ```
 
-# State Specific Data
+## State Specific Data
 ```
 State-specific data on the relative frequency of given names in the population
 of U.S. births where the individual has a Social Security Number (Tabulated
