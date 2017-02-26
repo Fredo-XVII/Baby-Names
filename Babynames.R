@@ -9,7 +9,12 @@ head(lifetables)
 head(births)
 
 max(births$year)
-colm <- subset(babynames,babynames$name == 'Colm')
+colm <- subset(National_Names,National_Names$Name == 'Aurelia')
+qplot(colm$Year,colm$Yr_rank, color = as.factor(colm$Gender))
+
+least_pop <- National_Names %>%
+             group_by(Year, Gender) %>%
+             filter(Count == 5)
 
 
 # Download data
@@ -26,6 +31,7 @@ unzip('namesbystate.zip', exdir = 'data')
 library(readr)
 library(sqldf)
 library(dplyr)
+library(ggplot2)
 
 # Get the list of files to combine:
 filesList <- list.files(path.expand('data'), pattern="yob*", ignore.case=TRUE)
@@ -69,4 +75,8 @@ for (i in 1:filelist_n) {
   print(filesList[[i]])
   print(sprintf('data/%s',filesList[[i]]))
 }
+
+# Graphs
+
+qplot(colm$year,colm$n, color = as.factor(colm$sex))
 

@@ -3,7 +3,8 @@ Analyzing baby names
 
 # To do List:
  - Loop over states:
-  - Solutions: 1 put national and state data into separate data folders
+  - Solutions: 1 put national and state data into separate data folders - DONE
+  - Adjust variable names to match State data.
 
 
 # Meta Data
