@@ -27,6 +27,10 @@ library(readr)
 library(sqldf)
 library(dplyr)
 
+# Get the list of files to combine:
+filesList <- list.files(path.expand('data'), pattern="yob*", ignore.case=TRUE)
+filelist_n <- length(filesList)
+
 # Creates the final datasets
 
 National_Names <- data.frame(Name = character(),
@@ -35,13 +39,8 @@ National_Names <- data.frame(Name = character(),
            Yr_rank=integer(),
            Year=integer())
 
-# Get the list of files to combine:
-filesList <- list.files(path.expand('data'), pattern="yob*", ignore.case=TRUE)
-filelist_n <- length(filesList)
-
-
 # Testing the loop
-#for (i in 1:2) {
+for (i in 1:filelist_n) {
   print("File being processed:")
   print(filesList[[i]])
   
