@@ -63,3 +63,6 @@ for (i in 1:filelist_n) {
 
 qplot(colm$year,colm$n, color = as.factor(colm$sex))
 
+tbl_names <- read.csv.sql(sprintf('data_states/%s','AK.txt'), sql = "select * from file", header = FALSE)
+colnames(tbl_names) <- c('State','Gender','Year','Name','Count')
+
