@@ -2,9 +2,16 @@
 Analyzing baby names
 
 # To do List:
- - Loop over states:
+ - Build data
+  - Loop over states
   - Solutions: 1 put national and state data into separate data folders - DONE
-  - Adjust variable names to match State data.
+  - Adjust variable names to match State data. - DONE
+  - For data build, remove any graph code.  Graphing will be done in Shiny App
+  - Need to save data sets as Rdata sets for Shiny App.
+  
+ - Build Shiny App 
+ 
+ - Place on Shiny website
 
 
 # Meta Data
