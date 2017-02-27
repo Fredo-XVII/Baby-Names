@@ -10,8 +10,10 @@ Analyzing baby names
   - Need to save data sets as Rdata sets for Shiny App.
   
  - Build Shiny App 
+  -
  
  - Place on Shiny website
+  - 
 
 
 # Meta Data
