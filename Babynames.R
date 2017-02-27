@@ -68,6 +68,8 @@ for (i in 1:filelist_n) {
   National_Names <- rbind(National_Names,as.data.frame(tbl_names) )
 }
 
+saveRDS(National_Names, file = "National_Names.rds" )
+
 
 
 for (i in 1:filelist_n) {
