@@ -50,6 +50,8 @@ for (i in 1:filelist_n) {
   State_Names <- rbind(State_Names,as.data.frame(tbl_names) )
 }
 
+saveRDS(State_Names, file = "State_Names.rds" )
+
 
 # Graphs
 
