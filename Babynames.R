@@ -69,8 +69,10 @@ for (i in 1:filelist_n) {
 }
 
 saveRDS(National_Names, file = "National_Names.rds" )
+saveRDS(National_Names, file = "National_Names.rds.bzip2", compress = "bzip2" )
 
-
+National_Names_bzip <- readRDS(file = "National_Names.rds.bzip2")
+identical(National_Names, National_Names_bzip)
 
 for (i in 1:filelist_n) {
   print("File being processed:")

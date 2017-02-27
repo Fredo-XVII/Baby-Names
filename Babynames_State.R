@@ -51,8 +51,10 @@ for (i in 1:filelist_n) {
 }
 
 saveRDS(State_Names, file = "State_Names.rds" )
+saveRDS(State_Names, file = "State_Names.rds.bzip2", compress = "bzip2" )
 
-
+State_Names_bzip <- readRDS(file = "State_Names.rds.bzip2")
+identical(State_Names, State_Names_bzip)
 # Graphs
 
 qplot(colm$year,colm$n, color = as.factor(colm$sex))
