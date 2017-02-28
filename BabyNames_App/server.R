@@ -9,12 +9,13 @@ shinyServer(function(input, output) {
   #  1) It is "reactive" and therefore should re-execute automatically
   #     when inputs change
   #  2) Its output type is a plot
+  #output$Name <- renderText({ 
+    #paste("You have selected this Name:")
+   # input$Name
   
-  output$distPlot <- renderPlot({
-    x    <- faithful[, 2]  # Old Faithful Geyser data
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+  #output$TimeSeries <- renderPlot({
     
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    #plot(National_Names$Year, National_Names$Count, data = subset(National_Names, Name = input$Name))
+
   })
 })

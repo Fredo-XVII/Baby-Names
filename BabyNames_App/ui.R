@@ -5,20 +5,25 @@ shinyUI(
   fluidPage(
   
   # Application title
-  titlePanel("title panel"),
+  titlePanel("Baby Names Popularity"),
   
   sidebarLayout(
     sidebarPanel( "sidebar panel",
       helpText("Create demographic maps with 
-        information from the 2010 US Census."),
+        information from the 2010 US Census.") #,
  
-      selectInput("var", 
-                label = "Choose a variable to display",
-                choices = list("Percent White", "Percent Black",
-                               "Percent Hispanic", "Percent Asian"),
-                selected = ("Percent White")
-      ) 
+      #textInput("Name", 
+        #        label = "Type a Name to Analyze",
+       #         value = "John",
+      #verbatimTextOutput("value")
+      #) 
     ) ,
-    mainPanel(h1("Main Panel"))
-  )) 
+    
+    mainPanel(textOutput("Name")
+      #plotOutput("TimeSeries") 
+      #textOutput("Name")
+    )
+  
+  ))
 )
+
