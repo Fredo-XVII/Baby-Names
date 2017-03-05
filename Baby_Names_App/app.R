@@ -40,7 +40,8 @@ ui <- fluidPage(
         #textOutput("textGender") ,
         #textOutput("textDisplay") ,
          
-        plotOutput("TimeSeries")
+        plotOutput("TimeSeries") , 
+        plotOutput("Rank")
       )
    )
 )
@@ -56,10 +57,32 @@ server <- function(input, output) {
   } )  
     
   output$TimeSeries <- renderPlot(
-    ggplot(plot_data(), aes_string(as.integer(plot_data()$Year),plot_data()$Count)) + geom_line()
+    ggplot(plot_data(), aes_string(as.integer(plot_data()$Year),plot_data()$Count)) + 
+      geom_line() +
+      xlab("Year") +
+      ylab("Total Count") +
+      ggtitle("Trend of Baby Name since 1880")
   )
+# End of the Time Series Function
+  
+  # Rank of Names over time.
+  # Reactive Data
+  plot_rank <- reactive ( { national %>% 
+      filter(Name == input$Names , Gender == input$Gender) %>%
+      select(Year, Yr_rank) 
+  } )  
+  
+  output$Rank <- renderPlot(
+    ggplot(plot_rank(), aes_string(as.integer(plot_rank()$Year),plot_rank()$Yr_rank)) + 
+      geom_line() +
+      scale_y_continuous(trans = "reverse") +
+      xlab("Year") +
+      ylab("Rank") +
+      ggtitle("Rank of Baby Name since 1880, Where 1 is the Highest Rank")
+  )
+  # End of Rank of Names over time.
 
-      
+        
 } # End of Server function
 
 # Run the application 

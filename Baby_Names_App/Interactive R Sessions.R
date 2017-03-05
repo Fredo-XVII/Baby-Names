@@ -15,3 +15,8 @@ if (interactive()) {
 plot %>% ggplot(aes_string(as.integer(plot$Year),plot$Count)) + geom_line()
 
 qplot(as.integer(plot$Year), plot$Count , plot, geom = "line" )
+
+nms_tot_yr_gndr <- national %>%
+  group_by(Year, Gender) %>%
+  summarise(Total = sum(Count))
+select(Year, Gender, Total)
