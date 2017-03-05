@@ -12,5 +12,6 @@ if (interactive()) {
   
 }
 
-plot %>% ggplot(aes(as.integer(plot$Year),plot$Count)) + geom_line()
+plot %>% ggplot(aes_string(as.integer(plot$Year),plot$Count)) + geom_line()
 
+qplot(as.integer(plot$Year), plot$Count , plot, geom = "line" )

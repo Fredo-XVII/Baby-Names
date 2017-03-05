@@ -11,6 +11,9 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 
+# Load the data
+national <- readRDS("C:\\Users\\marqu\\Documents\\Baby-Names\\Baby_Names_App\\National_Names.rds")
+
 # Define UI for application that draws a histogram
 ui <- fluidPage(
    
@@ -30,6 +33,7 @@ ui <- fluidPage(
                   value = "John"
         )
       ),
+      # End of SidebarPanel
       
       # Show a plot of the generated distribution
       mainPanel(
@@ -43,27 +47,20 @@ ui <- fluidPage(
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
-  national <- readRDS("C:\\Users\\marqu\\Documents\\Baby-Names\\Baby_Names_App\\National_Names.rds")
 
-  plot <- national %>% 
-          filter(Name == input$Names , Gender == input$Gender) %>%
-          select(everything())
-
-  output$TimeSeries <- renderPlot(
-    qplot(as.integer(plot$Year), plot$Count , plot, geom = "line" )
-  
-  #output$textGender <- renderText(
-   # paste0("The Gender you chose:" , input$Gender)
-  #)
-  
-  #output$textDisplay <- renderText(
-   # paste0("The name you chose:" , input$Names)
-  #) 
-  
-
-  )
+# Time Series of Names
+  # Reactive Data
+  plot_data <- reactive ( { national %>% 
+      filter(Name == input$Names , Gender == input$Gender) %>%
+      select(Year, Count) 
+  } )  
     
-   }
+  output$TimeSeries <- renderPlot(
+    ggplot(plot_data(), aes_string(as.integer(plot_data()$Year),plot_data()$Count)) + geom_line()
+  )
+
+      
+} # End of Server function
 
 # Run the application 
 shinyApp(ui = ui, server = server)
