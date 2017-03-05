@@ -1,4 +1,5 @@
 # ui.R for BabyNames_App
+library(shiny)
 
 shinyUI(fluidPage(
   titlePanel("censusVis"),

@@ -63,7 +63,7 @@ for (i in 1:filelist_n) {
   # End of data processing 
   
   # Create Year variable
-  tbl_names$Year <- substr(filesList[[i]],4,7) 
+  tbl_names$Year <- as.integer( substr(filesList[[i]],4,7) ) 
 
   National_Names <- rbind(National_Names,as.data.frame(tbl_names) )
 }
