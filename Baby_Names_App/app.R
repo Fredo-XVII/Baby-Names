@@ -11,8 +11,10 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 
+
 # Load the data
-national <- readRDS("C:\\Users\\marqu\\Documents\\Baby-Names\\Baby_Names_App\\National_Names.rds")
+# national <- readRDS("C:\\Users\\marqu\\Documents\\Baby-Names\\Baby_Names_App\\National_Names.rds") # Local machine
+national <- readRDS("National_Names.rds") # Shiny App deployment
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
