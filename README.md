@@ -2,21 +2,21 @@
 Analyzing baby names
 
 # To do List:
- - Build data
+> ### Build data:
   - Loop over states -DONE
   - Solutions: 1 put national and state data into separate data folders - DONE
   - Adjust variable names to match State data. - DONE
   - For data build, remove any graph code.  Graphing will be done in Shiny App
   - Need to save data sets as Rdata sets for Shiny App. - DONE
   - Need to convert Year to integer for final data set
-  
- - Build Shiny App 
+-----  
+> ### Build Shiny App: 
   - Gender and Name input selectors created - DONE
   - Time Series/Trend of count of names graph - DONE
   - Rank of names over time - DONE
- 
- - Place on Shiny website
-  - 
+----- 
+> ### Place on Shiny website:
+  - Baby_Names_App - uploaded and running on Shiny website.
 
 
 # Meta Data
